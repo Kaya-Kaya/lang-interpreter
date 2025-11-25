@@ -1,7 +1,13 @@
 #include "context.hpp"
+#include "value.hpp"
 
-template <typename T>
-T Context::lookup(const std::string& name) const {
-    return std::get<T>(_variables.at(name));
+#include <stdexcept>
+
+TypedValue Context::lookup(const std::string& name) const {
+    try {
+        return _variables.at(name);
+    } catch (std::out_of_range& e) {
+        // throw error
+    }
 }
 

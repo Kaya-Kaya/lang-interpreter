@@ -1,17 +1,17 @@
 #ifndef CONTEXT_H
 #define CONTEXT_H
 
+#include "value.hpp"
+
 #include <string>
 #include <unordered_map>
-#include <variant>
 
 class Context {
 private:
-    std::unordered_map<std::string, std::variant<int>> _variables;
+    std::unordered_map<std::string, TypedValue> _variables;
 
 public:
-    template <typename T>
-    T lookup(const std::string& name) const;
+    TypedValue lookup(const std::string& name) const;
     void assign();
 };
 

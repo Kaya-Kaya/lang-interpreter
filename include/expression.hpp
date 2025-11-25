@@ -1,62 +1,58 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
+#include "context.hpp"
+#include "value.hpp"
+
 #include <memory>
 #include <string>
 
-#include "context.hpp"
-
-template <typename T>
 class Expression {
 public:
-    Expression<T>();
+    Expression();
 
-    virtual T interpret(Context context);
+    virtual TypedValue interpret(Context context);
 };
 
 
-template <typename T>
-class TerminalExpression : Expression<T> {
+class TerminalExpression : Expression {
 private:
-    T _value;
+    TypedValue _value;
 
 public:
-    TerminalExpression<T>(T value);
+    TerminalExpression(TypedValue value);
 
-    T interpret(Context context);
+    TypedValue interpret(Context context);
 };
 
 
-template <typename T>
-class VariableExpression : Expression<T> {
+class VariableExpression : Expression {
 private:
-    T _name;
+    std::string _name;
 
 public:
-    VariableExpression<T>(const std::string& name);
+    VariableExpression(const std::string& name);
 
-    T interpret(Context context);
+    TypedValue interpret(Context context);
 };
 
 
-template <typename T>
-class UnaryExpression : Expression<T> {
+class UnaryExpression : Expression {
 private:
-    std::unique_ptr<Expression<T>> _right;
+    std::unique_ptr<const Expression> _right;
 
 public:
-    UnaryExpression<T>(const Expression<T>* expression);
+    UnaryExpression(const Expression* expression);
 };
 
 
-template <typename T>
-class BinaryExpression : Expression<T> {
+class BinaryExpression : Expression {
 private:
-    std::unique_ptr<Expression<T>> _left;
-    std::unique_ptr<Expression<T>> _right;
+    std::unique_ptr<const Expression> _left;
+    std::unique_ptr<const Expression> _right;
 
 public:
-    BinaryExpression<T>(const Expression<T>* left, const Expression<T>* right);
+    BinaryExpression(const Expression* left, const Expression* right);
 };
 
 #endif
