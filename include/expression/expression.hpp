@@ -11,7 +11,7 @@ class Expression {
 public:
     Expression();
 
-    virtual TypedValue interpret(Context context);
+    virtual TypedValue interpret(Context& context) const;
 };
 
 
@@ -22,7 +22,7 @@ private:
 public:
     TerminalExpression(TypedValue value);
 
-    TypedValue interpret(Context context);
+    TypedValue interpret(Context& context) const;
 };
 
 
@@ -33,12 +33,13 @@ private:
 public:
     VariableExpression(const std::string& name);
 
-    TypedValue interpret(Context context);
+    TypedValue interpret(Context& context) const;
+    const std::string& getName() const;
 };
 
 
 class UnaryExpression : Expression {
-private:
+protected:
     std::unique_ptr<const Expression> _right;
 
 public:
@@ -47,7 +48,7 @@ public:
 
 
 class BinaryExpression : Expression {
-private:
+protected:
     std::unique_ptr<const Expression> _left;
     std::unique_ptr<const Expression> _right;
 

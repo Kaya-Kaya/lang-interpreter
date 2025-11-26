@@ -6,13 +6,15 @@
 #include <string>
 #include <unordered_map>
 
+class VariableExpression;
+
 class Context {
 private:
     std::unordered_map<std::string, TypedValue> _variables;
 
 public:
     TypedValue lookup(const std::string& name) const;
-    void assign();
+    void assign(const VariableExpression* expression, const TypedValue value);
 };
 
 #endif
