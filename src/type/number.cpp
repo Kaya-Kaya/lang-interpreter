@@ -33,12 +33,13 @@ TypedValue NumberType::multiply(const TypedValue other) const {
 
 TypedValue NumberType::divide(const TypedValue other) const {
     switch (other.getType()) {
-        case Type::NUMBER:
+        case Type::NUMBER: {
             double divisor = get<NumberType>(other.getValue()).getValue();
             if (divisor == 0) {
                 throw DivisionByZeroException();
             }
             return TypedValue(NumberType(getValue() / divisor), Type::NUMBER);
+        }
         default:
             throw InvalidOperationException("Invalid operation: Cannot divide number by non-number");
     }
