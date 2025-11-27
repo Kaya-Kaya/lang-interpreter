@@ -9,6 +9,6 @@ add_executable(unit_tests
     test_bool.cpp
     test_context.cpp
 )
-target_link_libraries(unit_tests PRIVATE gtest_main interpreter)
+target_link_libraries(unit_tests PRIVATE gtest_main interpreter_lib)
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
