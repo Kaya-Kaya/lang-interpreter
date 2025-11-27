@@ -16,6 +16,6 @@ TypedValue Context::lookup(const std::string& name) const {
 }
 
 void Context::assign(const std::string& name, TypedValue value) {
-    _variables.insert(std::pair<std::string, TypedValue>(std::move(name), value));
+    _variables.insert_or_assign(name, value);
 }
 
