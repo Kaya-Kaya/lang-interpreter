@@ -1,4 +1,5 @@
 #include "context.hpp"
+#include "exception/interpreter_exception.hpp"
 #include "expression/expression.hpp"
 #include "expression/number_expression.hpp"
 #include "expression/equality_expression.hpp"
@@ -23,7 +24,10 @@ int main() {
     Context context;
     context.assign("x", TypedValue(NumberType(3.5), Type::NUMBER));
 
-    TypedValue result = exp->interpret(context);
-
-    std::cout << get<BoolType>(result.getValue()).getValue() << std::endl;
+    try {
+        TypedValue result = exp->interpret(context);
+        std::cout << get<BoolType>(result.getValue()).getValue() << std::endl;
+    } catch (const InterpreterException& e) {
+        std::cerr << "Runtime Error: " << e.what() << std::endl;
+    }
 }
