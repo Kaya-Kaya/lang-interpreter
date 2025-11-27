@@ -4,11 +4,12 @@
 #include "type/bool.hpp"
 #include "type/number.hpp"
 
+#include <cstdint>
 #include <variant>
 
 using Value = std::variant<NumberType, BoolType>;
 
-enum class Type {
+enum class Type : std::uint8_t {
     NUMBER,
     BOOL
 };
