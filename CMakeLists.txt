@@ -8,7 +8,7 @@ project(
 set(CMAKE_CXX_STANDARD, 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB SRC_FILES CONFIGURE_DEPENDS src/*.cpp)
+file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.cpp)
 
 add_executable(interpreter ${SRC_FILES})
 

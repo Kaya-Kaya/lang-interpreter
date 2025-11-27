@@ -5,16 +5,25 @@
 #include "expression/expression.hpp"
 #include "value.hpp"
 
-class NotExpression : UnaryExpression {
-    TypedValue interpret(Context& context) const;
+class NotExpression : public UnaryExpression {
+public:
+    using UnaryExpression::UnaryExpression;
+
+    TypedValue interpret(Context& context) const override;
 };
 
-class OrExpression : BinaryExpression {
-    TypedValue interpret(Context& context) const;
+class OrExpression : public BinaryExpression {
+public:
+    using BinaryExpression::BinaryExpression;
+
+    TypedValue interpret(Context& context) const override;
 };
 
-class AndExpression : BinaryExpression {
-    TypedValue interpret(Context& context) const;
+class AndExpression : public BinaryExpression {
+public:
+    using BinaryExpression::BinaryExpression;
+
+    TypedValue interpret(Context& context) const override;
 };
 
 #endif

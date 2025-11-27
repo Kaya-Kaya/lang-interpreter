@@ -2,7 +2,7 @@
 #include "type/type.hpp"
 #include "value.hpp"
 
-TypedValue NumberType::add(const TypedValue& other) const {
+TypedValue NumberType::add(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
             return TypedValue(NumberType(getValue() + get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
@@ -11,7 +11,7 @@ TypedValue NumberType::add(const TypedValue& other) const {
     }
 }
 
-TypedValue NumberType::subtract(const TypedValue& other) const {
+TypedValue NumberType::subtract(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
             return TypedValue(NumberType(getValue() - get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
@@ -20,7 +20,7 @@ TypedValue NumberType::subtract(const TypedValue& other) const {
     }
 }
 
-TypedValue NumberType::multiply(const TypedValue& other) const {
+TypedValue NumberType::multiply(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
             return TypedValue(NumberType(getValue() * get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
@@ -29,7 +29,7 @@ TypedValue NumberType::multiply(const TypedValue& other) const {
     }
 }
 
-TypedValue NumberType::divide(const TypedValue& other) const {
+TypedValue NumberType::divide(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
             return TypedValue(NumberType(getValue() / get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
@@ -37,3 +37,16 @@ TypedValue NumberType::divide(const TypedValue& other) const {
             // error
     }
 }
+
+TypedValue NumberType::logicalNot() const {
+
+}
+
+TypedValue NumberType::logicalAnd(const TypedValue other) const {
+
+}
+
+TypedValue NumberType::logicalOr(const TypedValue other) const {
+
+}
+

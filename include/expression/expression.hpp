@@ -9,51 +9,51 @@
 
 class Expression {
 public:
-    Expression();
+    virtual ~Expression() = default;
 
-    virtual TypedValue interpret(Context& context) const;
+    virtual TypedValue interpret(Context& context) const = 0;
 };
 
 
-class TerminalExpression : Expression {
+class TerminalExpression : public Expression {
 private:
     TypedValue _value;
 
 public:
     TerminalExpression(TypedValue value);
 
-    TypedValue interpret(Context& context) const;
+    TypedValue interpret(Context& context) const override;
 };
 
 
-class VariableExpression : Expression {
+class VariableExpression : public Expression {
 private:
     std::string _name;
 
 public:
     VariableExpression(const std::string& name);
 
-    TypedValue interpret(Context& context) const;
+    TypedValue interpret(Context& context) const override;
     const std::string& getName() const;
 };
 
 
-class UnaryExpression : Expression {
+class UnaryExpression : public Expression {
 protected:
     std::unique_ptr<const Expression> _right;
 
 public:
-    UnaryExpression(const Expression* expression);
+    UnaryExpression(std::unique_ptr<Expression> expression);
 };
 
 
-class BinaryExpression : Expression {
+class BinaryExpression : public Expression {
 protected:
     std::unique_ptr<const Expression> _left;
     std::unique_ptr<const Expression> _right;
 
 public:
-    BinaryExpression(const Expression* left, const Expression* right);
+    BinaryExpression(std::unique_ptr<Expression> left, std::unique_ptr<Expression> right);
 };
 
 #endif

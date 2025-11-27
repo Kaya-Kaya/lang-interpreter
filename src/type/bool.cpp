@@ -6,7 +6,7 @@ TypedValue BoolType::logicalNot() const {
     return TypedValue(BoolType(!getValue()), Type::BOOL);
 }
 
-TypedValue BoolType::logicalOr(const TypedValue& other) const {
+TypedValue BoolType::logicalOr(const TypedValue other) const {
     switch (other.getType()) {
         case Type::BOOL:
             return TypedValue(BoolType(getValue() || get<BoolType>(other.getValue()).getValue()), Type::BOOL);
@@ -15,12 +15,28 @@ TypedValue BoolType::logicalOr(const TypedValue& other) const {
     }
 }
 
-TypedValue BoolType::logicalAnd(const TypedValue& other) const {
+TypedValue BoolType::logicalAnd(const TypedValue other) const {
     switch (other.getType()) {
         case Type::BOOL:
             return TypedValue(BoolType(getValue() && std::get<BoolType>(other.getValue()).getValue()), Type::BOOL);
         default:
             // error
     }
+}
+
+TypedValue BoolType::add(const TypedValue other) const {
+    // error
+}
+
+TypedValue BoolType::subtract(const TypedValue other) const {
+    // error
+}
+
+TypedValue BoolType::multiply(const TypedValue other) const {
+    // error
+}
+
+TypedValue BoolType::divide(const TypedValue other) const {
+    // error
 }
 

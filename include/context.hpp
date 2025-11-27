@@ -14,7 +14,7 @@ private:
 
 public:
     TypedValue lookup(const std::string& name) const;
-    void assign(const VariableExpression* expression, const TypedValue value);
+    void assign(const VariableExpression* expression, TypedValue value);
 };
 
 #endif

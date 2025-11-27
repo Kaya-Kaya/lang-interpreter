@@ -2,7 +2,9 @@
 #include "context.hpp"
 #include "value.hpp"
 
+#include <memory>
 #include <string>
+#include <utility>
 
 TerminalExpression::TerminalExpression(TypedValue value) : _value(value) {}
 
@@ -11,7 +13,7 @@ TypedValue TerminalExpression::interpret(Context& context) const {
 }
 
 
-VariableExpression::VariableExpression(const std::string& name) : _name(name) {}
+VariableExpression::VariableExpression(const std::string& name) : _name(std::move(name)) {}
 
 TypedValue VariableExpression::interpret(Context& context) const {
     return context.lookup(_name);
@@ -22,9 +24,9 @@ const std::string& VariableExpression::getName() const {
 }
 
 
-UnaryExpression::UnaryExpression(const Expression* expression) : _right(expression) {}
+UnaryExpression::UnaryExpression(std::unique_ptr<Expression> expression) : _right(std::move(expression)) {}
 
 
-BinaryExpression::BinaryExpression(const Expression* left, const Expression* right)
-    : _left(left), _right(right) {}
+BinaryExpression::BinaryExpression(std::unique_ptr<Expression> left, std::unique_ptr<Expression> right)
+    : _left(std::move(left)), _right(std::move(right)) {}
 

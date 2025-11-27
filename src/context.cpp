@@ -3,6 +3,7 @@
 #include "value.hpp"
 
 #include <stdexcept>
+#include <utility>
 
 TypedValue Context::lookup(const std::string& name) const {
     try {
@@ -12,7 +13,7 @@ TypedValue Context::lookup(const std::string& name) const {
     }
 }
 
-void Context::assign(const VariableExpression* expression, const TypedValue value) {
-    _variables[expression->getName()] = value;
+void Context::assign(const VariableExpression* expression, TypedValue value) {
+    _variables.insert(std::pair<std::string, TypedValue>(expression->getName(), value));
 }
 

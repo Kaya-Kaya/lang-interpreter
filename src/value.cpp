@@ -38,3 +38,39 @@ TypedValue TypedValue::logicalOr(const TypedValue& other) const {
     }
 }
 
+TypedValue TypedValue::add(const TypedValue& other) const {
+    switch (getType()) {
+        case Type::NUMBER:
+            return get<NumberType>(getValue()).add(other);
+        default:
+            // error
+    }
+}
+
+TypedValue TypedValue::subtract(const TypedValue& other) const {
+    switch (getType()) {
+        case Type::NUMBER:
+            return get<NumberType>(getValue()).subtract(other);
+        default:
+            // error
+    }
+}
+
+TypedValue TypedValue::multiply(const TypedValue& other) const {
+    switch (getType()) {
+        case Type::NUMBER:
+            return get<NumberType>(getValue()).multiply(other);
+        default:
+            // error
+    }
+}
+
+TypedValue TypedValue::divide(const TypedValue& other) const {
+    switch (getType()) {
+        case Type::NUMBER:
+            return get<NumberType>(getValue()).divide(other);
+        default:
+            // error
+    }
+}
+
