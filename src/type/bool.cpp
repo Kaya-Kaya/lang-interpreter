@@ -24,6 +24,42 @@ TypedValue BoolType::logicalAnd(const TypedValue other) const {
     }
 }
 
+TypedValue BoolType::isEqual(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::BOOL:
+            return TypedValue(BoolType(getValue() == std::get<BoolType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            // might change later
+            return TypedValue(BoolType(false), Type::BOOL);
+    }
+}
+
+TypedValue BoolType::isNotEqual(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::BOOL:
+            return TypedValue(BoolType(getValue() != std::get<BoolType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            // might change later
+            return TypedValue(BoolType(true), Type::BOOL);
+    }
+}
+
+TypedValue BoolType::isLess(const TypedValue other) const {
+    // error
+}
+
+TypedValue BoolType::isGreater(const TypedValue other) const {
+    // error
+}
+
+TypedValue BoolType::isLessOrEqual(const TypedValue other) const {
+    // error
+}
+
+TypedValue BoolType::isGreaterOrEqual(const TypedValue other) const {
+    // error
+}
+
 TypedValue BoolType::add(const TypedValue other) const {
     // error
 }

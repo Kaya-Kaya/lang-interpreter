@@ -21,6 +21,13 @@ public:
     virtual TypedValue multiply(const TypedValue other) const = 0;
     virtual TypedValue divide(const TypedValue other) const = 0;
 
+    virtual TypedValue isEqual(const TypedValue other) const = 0;
+    virtual TypedValue isNotEqual(const TypedValue other) const = 0;
+    virtual TypedValue isLess(const TypedValue other) const = 0;
+    virtual TypedValue isGreater(const TypedValue other) const = 0;
+    virtual TypedValue isLessOrEqual(const TypedValue other) const = 0;
+    virtual TypedValue isGreaterOrEqual(const TypedValue other) const = 0;
+
     T getValue() const {
         return _value;
     }

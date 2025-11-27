@@ -1,4 +1,5 @@
 #include "type/number.hpp"
+#include "type/bool.hpp"
 #include "type/type.hpp"
 #include "value.hpp"
 
@@ -33,6 +34,60 @@ TypedValue NumberType::divide(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
             return TypedValue(NumberType(getValue() / get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
+        default:
+            // error
+    }
+}
+
+TypedValue NumberType::isEqual(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER:
+            return TypedValue(BoolType(getValue() == get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            return TypedValue(BoolType(false), Type::BOOL);
+    }
+}
+
+TypedValue NumberType::isNotEqual(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER:
+            return TypedValue(BoolType(getValue() != get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            return TypedValue(BoolType(true), Type::BOOL);
+    }
+}
+
+TypedValue NumberType::isLess(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER:
+            return TypedValue(BoolType(getValue() < get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            // error
+    }
+}
+
+TypedValue NumberType::isGreater(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER:
+            return TypedValue(BoolType(getValue() > get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            // error
+    }
+}
+
+TypedValue NumberType::isLessOrEqual(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER:
+            return TypedValue(BoolType(getValue() <= get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+        default:
+            // error
+    }
+}
+
+TypedValue NumberType::isGreaterOrEqual(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER:
+            return TypedValue(BoolType(getValue() >= get<NumberType>(other.getValue()).getValue()), Type::BOOL);
         default:
             // error
     }

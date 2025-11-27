@@ -1,6 +1,7 @@
 #include "context.hpp"
 #include "expression/expression.hpp"
 #include "expression/number_expression.hpp"
+#include "expression/equality_expression.hpp"
 #include "type/number.hpp"
 #include "value.hpp"
 
@@ -8,13 +9,21 @@
 #include <memory>
 
 int main() {
-    std::unique_ptr<AddExpression> exp = std::make_unique<AddExpression>(
+    std::unique_ptr<Expression> exp = std::make_unique<IsEqualExpression>(
+        std::make_unique<AddExpression>(
             std::make_unique<TerminalExpression>(TypedValue(NumberType(3), Type::NUMBER)),
             std::make_unique<TerminalExpression>(TypedValue(NumberType(4), Type::NUMBER))
+        ),
+        std::make_unique<MultiplyExpression>(
+            std::make_unique<TerminalExpression>(TypedValue(NumberType(2), Type::NUMBER)),
+            std::make_unique<VariableExpression>("x")
+        )
     );
 
     Context context;
+    context.assign("x", TypedValue(NumberType(3.5), Type::NUMBER));
+
     TypedValue result = exp->interpret(context);
 
-    std::cout << get<NumberType>(result.getValue()).getValue() << std::endl;
+    std::cout << get<BoolType>(result.getValue()).getValue() << std::endl;
 }
