@@ -5,7 +5,7 @@
 #include "type/number.hpp"
 #include "value.hpp"
 
-TEST(ContextTest, BasicAssignAndLookup) {
+TEST(ContextTest, AssignAndLookup) {
     Context ctx;
     TypedValue val(NumberType(100), Type::NUMBER);
     
