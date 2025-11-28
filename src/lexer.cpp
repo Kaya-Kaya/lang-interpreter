@@ -19,14 +19,16 @@ Lexer::Lexer() {
 
 Lexer::~Lexer() = default;
 
-void Lexer::tokenize(const std::string& input, std::vector<Token>& tokensOut) {
-    for (int startIdx = 0; startIdx < input.size(); ) {
+void Lexer::tokenize(const std::string& text, std::vector<Token>& tokensOut) {
+    const std::string_view textView(text);
+
+    for (int startIdx = 0; startIdx < text.size(); ) {
         bool matched = false;
 
         for (int regIdx = 0; regIdx < TOKEN_TYPE_COUNT; regIdx++) {
             re2::StringPiece match;
 
-            if (RE2::PartialMatch(input.substr(startIdx), *_compiledRegexes[regIdx], &match)) {
+            if (RE2::PartialMatch(textView.substr(startIdx), *_compiledRegexes[regIdx], &match)) {
                 tokensOut.emplace_back(std::make_unique<std::string>(match.data(), match.size()), regexes[regIdx].first);
                 startIdx += match.size();
                 matched = true;
