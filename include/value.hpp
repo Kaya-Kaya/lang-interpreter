@@ -11,7 +11,8 @@ using Value = std::variant<NumberType, BoolType>;
 
 enum class Type : std::uint8_t {
     NUMBER,
-    BOOL
+    BOOL,
+    LAST = BOOL
 };
 
 class TypedValue {

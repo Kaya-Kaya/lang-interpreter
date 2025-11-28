@@ -1,6 +1,8 @@
 #include "value.hpp"
 #include "type/bool.hpp"
 
+#include <cassert>
+
 TypedValue::TypedValue(Value value) : _value(value) {}
 
 Value TypedValue::getValue() const {
@@ -8,7 +10,11 @@ Value TypedValue::getValue() const {
 }
 
 Type TypedValue::getType() const {
-    return (Type) _value.index();
+    Type type = static_cast<Type>(_value.index());
+
+    assert(type <= Type::LAST);
+
+    return type;
 }
 
 TypedValue TypedValue::logicalNot() const {
