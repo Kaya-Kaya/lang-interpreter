@@ -7,7 +7,7 @@
 
 TEST(ContextTest, AssignAndLookup) {
     Context ctx;
-    TypedValue val(NumberType(100), Type::NUMBER);
+    TypedValue val(NumberType(100));
     
     ctx.assign("myVar", val);
     TypedValue result = ctx.lookup("myVar");
@@ -18,8 +18,8 @@ TEST(ContextTest, AssignAndLookup) {
 
 TEST(ContextTest, OverwriteVariable) {
     Context ctx;
-    TypedValue val1(NumberType(1), Type::NUMBER);
-    TypedValue val2(NumberType(2), Type::NUMBER);
+    TypedValue val1(NumberType(1));
+    TypedValue val2(NumberType(2));
     
     ctx.assign("x", val1);
     EXPECT_DOUBLE_EQ(std::get<NumberType>(ctx.lookup("x").getValue()).getValue(), 1.0);

@@ -6,8 +6,6 @@
 #include <string>
 #include <unordered_map>
 
-class VariableExpression;
-
 class Context {
 private:
     std::unordered_map<std::string, TypedValue> _variables;

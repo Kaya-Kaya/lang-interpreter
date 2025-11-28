@@ -4,13 +4,13 @@
 #include "value.hpp"
 
 TypedValue BoolType::logicalNot() const {
-    return TypedValue(BoolType(!getValue()), Type::BOOL);
+    return TypedValue(BoolType(!getValue()));
 }
 
 TypedValue BoolType::logicalOr(const TypedValue other) const {
     switch (other.getType()) {
         case Type::BOOL:
-            return TypedValue(BoolType(getValue() || get<BoolType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() || get<BoolType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot perform logical OR with non-boolean");
     }
@@ -19,7 +19,7 @@ TypedValue BoolType::logicalOr(const TypedValue other) const {
 TypedValue BoolType::logicalAnd(const TypedValue other) const {
     switch (other.getType()) {
         case Type::BOOL:
-            return TypedValue(BoolType(getValue() && std::get<BoolType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() && std::get<BoolType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot perform logical AND with non-boolean");
     }
@@ -28,20 +28,20 @@ TypedValue BoolType::logicalAnd(const TypedValue other) const {
 TypedValue BoolType::isEqual(const TypedValue other) const {
     switch (other.getType()) {
         case Type::BOOL:
-            return TypedValue(BoolType(getValue() == std::get<BoolType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() == std::get<BoolType>(other.getValue()).getValue()));
         default:
             // might change later
-            return TypedValue(BoolType(false), Type::BOOL);
+            return TypedValue(BoolType(false));
     }
 }
 
 TypedValue BoolType::isNotEqual(const TypedValue other) const {
     switch (other.getType()) {
         case Type::BOOL:
-            return TypedValue(BoolType(getValue() != std::get<BoolType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() != std::get<BoolType>(other.getValue()).getValue()));
         default:
             // might change later
-            return TypedValue(BoolType(true), Type::BOOL);
+            return TypedValue(BoolType(true));
     }
 }
 

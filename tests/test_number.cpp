@@ -11,10 +11,10 @@ protected:
     NumberType num3{3.0};
     NumberType num0{0.0};
     
-    TypedValue tv5 = TypedValue(num5, Type::NUMBER);
-    TypedValue tv3 = TypedValue(num3, Type::NUMBER);
-    TypedValue tv0 = TypedValue(num0, Type::NUMBER);
-    TypedValue tvBool = TypedValue(BoolType(true), Type::BOOL);
+    TypedValue tv5 = TypedValue(num5);
+    TypedValue tv3 = TypedValue(num3);
+    TypedValue tv0 = TypedValue(num0);
+    TypedValue tvBool = TypedValue(BoolType(true));
 };
 
 // Arithmetic

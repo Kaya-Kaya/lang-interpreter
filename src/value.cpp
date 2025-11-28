@@ -1,14 +1,14 @@
 #include "value.hpp"
 #include "type/bool.hpp"
 
-TypedValue::TypedValue(Value value, Type type) : _value(value), _type(type) {}
+TypedValue::TypedValue(Value value) : _value(value) {}
 
 Value TypedValue::getValue() const {
     return _value;
 }
 
 Type TypedValue::getType() const {
-    return _type;
+    return (Type) _value.index();
 }
 
 TypedValue TypedValue::logicalNot() const {

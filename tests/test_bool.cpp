@@ -10,9 +10,9 @@ protected:
     BoolType bTrue{true};
     BoolType bFalse{false};
     
-    TypedValue tvTrue = TypedValue(bTrue, Type::BOOL);
-    TypedValue tvFalse = TypedValue(bFalse, Type::BOOL);
-    TypedValue tvNum = TypedValue(NumberType(1), Type::NUMBER);
+    TypedValue tvTrue = TypedValue(bTrue);
+    TypedValue tvFalse = TypedValue(bFalse);
+    TypedValue tvNum = TypedValue(NumberType(1));
 };
 
 // Logical operations

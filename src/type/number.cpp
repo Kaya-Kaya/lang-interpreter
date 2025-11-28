@@ -7,7 +7,7 @@
 TypedValue NumberType::add(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(NumberType(getValue() + get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
+            return TypedValue(NumberType(getValue() + get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot add non-number to number");
     }
@@ -16,7 +16,7 @@ TypedValue NumberType::add(const TypedValue other) const {
 TypedValue NumberType::subtract(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(NumberType(getValue() - get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
+            return TypedValue(NumberType(getValue() - get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot subtract non-number from number");
     }
@@ -25,7 +25,7 @@ TypedValue NumberType::subtract(const TypedValue other) const {
 TypedValue NumberType::multiply(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(NumberType(getValue() * get<NumberType>(other.getValue()).getValue()), Type::NUMBER);
+            return TypedValue(NumberType(getValue() * get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot multiply number by non-number");
     }
@@ -38,7 +38,7 @@ TypedValue NumberType::divide(const TypedValue other) const {
             if (divisor == 0) {
                 throw DivisionByZeroException();
             }
-            return TypedValue(NumberType(getValue() / divisor), Type::NUMBER);
+            return TypedValue(NumberType(getValue() / divisor));
         }
         default:
             throw InvalidOperationException("Invalid operation: Cannot divide number by non-number");
@@ -48,25 +48,25 @@ TypedValue NumberType::divide(const TypedValue other) const {
 TypedValue NumberType::isEqual(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(BoolType(getValue() == get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() == get<NumberType>(other.getValue()).getValue()));
         default:
-            return TypedValue(BoolType(false), Type::BOOL);
+            return TypedValue(BoolType(false));
     }
 }
 
 TypedValue NumberType::isNotEqual(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(BoolType(getValue() != get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() != get<NumberType>(other.getValue()).getValue()));
         default:
-            return TypedValue(BoolType(true), Type::BOOL);
+            return TypedValue(BoolType(true));
     }
 }
 
 TypedValue NumberType::isLess(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(BoolType(getValue() < get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() < get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot compare number with non-number");
     }
@@ -75,7 +75,7 @@ TypedValue NumberType::isLess(const TypedValue other) const {
 TypedValue NumberType::isGreater(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(BoolType(getValue() > get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() > get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot compare number with non-number");
     }
@@ -84,7 +84,7 @@ TypedValue NumberType::isGreater(const TypedValue other) const {
 TypedValue NumberType::isLessOrEqual(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(BoolType(getValue() <= get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() <= get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot compare number with non-number");
     }
@@ -93,7 +93,7 @@ TypedValue NumberType::isLessOrEqual(const TypedValue other) const {
 TypedValue NumberType::isGreaterOrEqual(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
-            return TypedValue(BoolType(getValue() >= get<NumberType>(other.getValue()).getValue()), Type::BOOL);
+            return TypedValue(BoolType(getValue() >= get<NumberType>(other.getValue()).getValue()));
         default:
             throw InvalidOperationException("Invalid operation: Cannot compare number with non-number");
     }

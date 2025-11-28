@@ -17,10 +17,9 @@ enum class Type : std::uint8_t {
 class TypedValue {
 private:
     Value _value;
-    Type _type;
 
 public:
-    TypedValue(Value value, Type type);
+    TypedValue(Value value);
 
     Value getValue() const;
     Type getType() const;
