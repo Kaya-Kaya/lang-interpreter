@@ -1,9 +1,9 @@
-#include <gtest/gtest.h>
-
 #include "exception/runtime_exception.hpp"
 #include "type/number.hpp"
 #include "type/bool.hpp"
 #include "value.hpp"
+
+#include <gtest/gtest.h>
 
 class NumberTypeTest : public ::testing::Test {
 protected:

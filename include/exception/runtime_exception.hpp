@@ -2,21 +2,22 @@
 #define RUNTIME_EXCEPTION_H
 
 #include "interpreter_exception.hpp"
+
 #include <string>
 
 class RuntimeException : public InterpreterException {
 public:
-    RuntimeException(const std::string &message) : InterpreterException(message) {}
+    RuntimeException(const std::string& message) : InterpreterException(message) {}
 };
 
 class UndefinedVariableException : public RuntimeException {
 public:
-    UndefinedVariableException(const std::string &name) : RuntimeException("Undefined variable: '" + name + "'") {}
+    UndefinedVariableException(const std::string& name) : RuntimeException("Undefined variable: '" + name + "'") {}
 };
 
 class InvalidOperationException : public RuntimeException {
 public:
-    InvalidOperationException(const std::string &message) : RuntimeException(message) {}
+    InvalidOperationException(const std::string& message) : RuntimeException(message) {}
 };
 
 class DivisionByZeroException : public RuntimeException {
