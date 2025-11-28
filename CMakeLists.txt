@@ -31,6 +31,7 @@ file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.cpp)
 list(FILTER SRC_FILES EXCLUDE REGEX "src/main.cpp$")
 
 add_library(interpreter_lib ${SRC_FILES})
+target_link_libraries(interpreter_lib PRIVATE re2::re2)
 
 target_include_directories(interpreter_lib
     PUBLIC include
@@ -41,7 +42,7 @@ target_compile_features(interpreter_lib
 )
 
 add_executable(interpreter src/main.cpp)
-target_link_libraries(interpreter PRIVATE interpreter_lib re2::re2)
+target_link_libraries(interpreter PRIVATE interpreter_lib)
 
 enable_testing()
 add_subdirectory(tests)
