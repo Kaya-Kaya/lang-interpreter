@@ -1,9 +1,9 @@
-#include <gtest/gtest.h>
-
 #include "context.hpp"
 #include "exception/runtime_exception.hpp"
 #include "type/number.hpp"
 #include "value.hpp"
+
+#include <gtest/gtest.h>
 
 TEST(ContextTest, AssignAndLookup) {
     Context ctx;
