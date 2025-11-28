@@ -1,7 +1,7 @@
 #include "lexer.hpp"
 #include "re2/stringpiece.h"
 
-#include <iostream>
+#include <cassert>
 #include <memory>
 #include <re2/re2.h>
 #include <string>
@@ -13,6 +13,7 @@ Token::Token(std::unique_ptr<std::string> text, TokenType type) : text(std::move
 Lexer::Lexer() {
     for (int i = 0; i < TOKEN_TYPE_COUNT; i++) {
         _compiledRegexes[i] = std::make_unique<RE2>(regexes[i].second);
+        assert(_compiledRegexes[i]->ok());
     }
 }
 
