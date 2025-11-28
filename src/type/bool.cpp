@@ -77,3 +77,7 @@ TypedValue BoolType::divide(const TypedValue other) const {
     throw InvalidOperationException("Invalid operation: Cannot divide booleans");
 }
 
+TypedValue BoolType::power(const TypedValue other) const {
+    throw InvalidOperationException("Invalid operation: Cannot exponentiate booleans");
+}
+

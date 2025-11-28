@@ -33,6 +33,7 @@ public:
     TypedValue subtract(const TypedValue other) const;
     TypedValue multiply(const TypedValue other) const;
     TypedValue divide(const TypedValue other) const;
+    TypedValue power(const TypedValue other) const;
 
     TypedValue isEqual(const TypedValue other) const;
     TypedValue isNotEqual(const TypedValue other) const;

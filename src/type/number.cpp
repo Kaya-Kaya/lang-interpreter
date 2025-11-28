@@ -4,6 +4,8 @@
 #include "type/type.hpp"
 #include "value.hpp"
 
+#include <cmath>
+
 TypedValue NumberType::add(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:
@@ -39,6 +41,23 @@ TypedValue NumberType::divide(const TypedValue other) const {
                 throw DivisionByZeroException();
             }
             return TypedValue(NumberType(getValue() / divisor));
+        }
+        default:
+            throw InvalidOperationException("Invalid operation: Cannot divide number by non-number");
+    }
+}
+
+TypedValue NumberType::power(const TypedValue other) const {
+    switch (other.getType()) {
+        case Type::NUMBER: {
+            double left = getValue();
+            double right = get<NumberType>(other.getValue()).getValue();
+
+            if ((left == 0) && (right == 0)) {
+                throw DivisionByZeroException();
+            }
+
+            return TypedValue(NumberType(std::pow(left, right)));
         }
         default:
             throw InvalidOperationException("Invalid operation: Cannot divide number by non-number");
