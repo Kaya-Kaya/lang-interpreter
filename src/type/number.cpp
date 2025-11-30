@@ -6,6 +6,10 @@
 
 #include <cmath>
 
+TypedValue NumberType::negate() const {
+    return TypedValue(NumberType(-getValue()));
+}
+
 TypedValue NumberType::add(const TypedValue other) const {
     switch (other.getType()) {
         case Type::NUMBER:

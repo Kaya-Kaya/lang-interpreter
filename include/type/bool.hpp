@@ -11,6 +11,7 @@ public:
     TypedValue logicalOr(const TypedValue other) const;
     TypedValue logicalAnd(const TypedValue other) const;
 
+    TypedValue negate() const;
     TypedValue add(const TypedValue other) const;
     TypedValue subtract(const TypedValue other) const;
     TypedValue multiply(const TypedValue other) const;

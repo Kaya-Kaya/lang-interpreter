@@ -5,6 +5,13 @@
 #include "expression/expression.hpp"
 #include "value.hpp"
 
+class NegateExpression : public UnaryExpression {
+public:
+    using UnaryExpression::UnaryExpression;
+
+    TypedValue interpret(Context& context) const override;
+};
+
 class AddExpression : public BinaryExpression {
 public:
     using BinaryExpression::BinaryExpression;

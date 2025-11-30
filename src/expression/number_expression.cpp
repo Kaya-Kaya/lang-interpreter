@@ -1,5 +1,10 @@
 #include "expression/number_expression.hpp"
+#include "context.hpp"
 #include "value.hpp"
+
+TypedValue NegateExpression::interpret(Context& context) const {
+    return _right->interpret(context).negate();
+}
 
 TypedValue AddExpression::interpret(Context& context) const {
     return _left->interpret(context).add(_right->interpret(context));

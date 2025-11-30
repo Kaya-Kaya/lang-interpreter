@@ -61,6 +61,10 @@ TypedValue BoolType::isGreaterOrEqual(const TypedValue other) const {
     throw InvalidOperationException("Invalid operation: Cannot compare booleans");
 }
 
+TypedValue BoolType::negate() const {
+    throw InvalidOperationException("Invalid operation: Cannot negate booleans");
+}
+
 TypedValue BoolType::add(const TypedValue other) const {
     throw InvalidOperationException("Invalid operation: Cannot add booleans");
 }
