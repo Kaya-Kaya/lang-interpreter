@@ -59,7 +59,7 @@ int main() {
                 break;
         }
 
-        std::cout << typeName << ' ' << *token.text << std::endl;
+        std::cout << typeName << ' ' << token.text << std::endl;
     }
 }
 

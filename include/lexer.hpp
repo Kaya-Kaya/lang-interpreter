@@ -27,10 +27,10 @@ constexpr std::array<std::pair<TokenType, std::string_view>, TOKEN_TYPE_COUNT> r
 };
 
 struct Token {
-    std::unique_ptr<std::string> text;
+    std::string_view text;
     TokenType type;
 
-    Token(std::unique_ptr<std::string> text, TokenType type);
+    Token(std::string_view text, TokenType type);
 };
 
 namespace re2 {
@@ -45,7 +45,10 @@ public:
     Lexer();
     ~Lexer();
 
-    void tokenize(const std::string& input, std::vector<Token>& tokensOut);
+    /**
+     * Populates the token vector from the given string.
+     */
+    void tokenize(const std::string_view input, std::vector<Token>& tokensOut);
 };
 
 #endif
